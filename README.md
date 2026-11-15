@@ -36,6 +36,7 @@ No package installation, build command, custom domain, or custom Actions workflo
 ## Maintenance
 
 - Edit `index.html` for copy, `styles.css` for presentation, `app.js` for the theme, view selector, and sharing controls, and `hero.js` for the hero animation. Commit and push to `main` to publish updates.
+- When replacing `styles.css`, update its `?v=` token in `index.html` so returning visitors load the matching stylesheet.
 - Replace `Jesus_Arias_Resume.pdf` with an updated PDF under the same filename to preserve its download link.
 - The canonical URL, social metadata, structured-data URL, and both QR files target `https://jarias9.github.io/`. The share dialog reads that canonical URL. If the destination changes, update all of these together before publishing.
 - Keep the media credits in [CREDITS.md](CREDITS.md) and on the page. The hero is a stylized derivative of the GTRI rotor-wake footage; the detailed project videos preserve the original colors, framing, and timing.

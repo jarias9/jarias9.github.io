@@ -23,7 +23,7 @@ These animations come from the GTRI feature; they were not extracted from the AI
 | `assets/h60-wake-poster.png` | Original wake frame 155, zero-based | Still | — |
 | `assets/h60-flow-poster.png` | Original flow frame 151, zero-based | Still | — |
 
-MP4/H.264 conversions preserve the original frame count, presentation timestamps, durations, order, and framing. Original 720 × 317 frames have one bottom padding row for 720 × 318 video encoding; no source pixels are cropped or stretched. Encoding uses CRF 18, H.264 High/3.1, yuv420p, no B-frames, and MP4 faststart. Normal lossy video encoding applies. The PNG posters are lossless decoded original frames. The animations play only on visitor request.
+MP4/H.264 conversions preserve the original frame count, presentation timestamps, durations, order, and framing. Original 720 × 317 frames have one bottom padding row for 720 × 318 video encoding; no source pixels are cropped or stretched. Encoding uses CRF 18, H.264 High/3.1, yuv420p, no B-frames, and MP4 faststart. Normal lossy video encoding applies. The PNG posters are lossless decoded original frames. The two detailed project videos play only on visitor request.
 
 Original GIF SHA-256 checksums:
 
@@ -32,6 +32,14 @@ Original GIF SHA-256 checksums:
 
 Preserve the original scientific content and visible attribution in future edits. These credits do not assert an open license or GTRI endorsement.
 
+## Stylized helicopter hero
+
+`assets/h60-hero.mp4` is a 480 × 212 H.264 derivative of the rotor-wake video: 311 frames, 10.36 seconds, and 1,292,009 bytes. The source frame order and presentation timing are preserved. Encoding uses Lanczos resizing, libx264 CRF 24, yuv420p, no B-frames, MP4 faststart, and no audio.
+
+`hero.js` uses Canvas 2D to approximate removal of the original white background while retaining the colored foreground. Near-white edge pixels receive transparency and white unmatting; four bottom rows of source rule/padding are cleared, and a small CSS fade softens the cropped left edge. This is a stylized presentation of the real footage, not a recovered original alpha channel. The detailed project videos below remain available in their original colors and framing. No flow geometry, vortices, camera motion, or intermediate frames are generated.
+
+The muted inline hero plays once when visible, then holds, with Pause, Resume, and Replay controls. It pauses offscreen and when the tab is hidden. Reduced-motion and data-saving preferences use a still until deliberate playback; blocked autoplay retains a Play control. Processing remains at 480 × 212 pixels, independent of screen pixel density. The hero visibly credits GTRI and links to the full project context.
+
 ## Other assets
 
-The computational mesh illustration and social preview were created for this personal site. The mesh is decorative linework, not a simulation result. QR codes encode the intended public website address.
+The retained computational mesh illustration and social preview were created for this personal site. The mesh is decorative linework, not a simulation result, and is no longer used by the current hero. QR codes encode the intended public website address.

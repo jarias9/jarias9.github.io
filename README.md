@@ -4,7 +4,7 @@ A personal portfolio for Jesus Arias, focused on high-performance computing, num
 
 **Site address:** [jarias9.github.io](https://jarias9.github.io/)
 
-The site includes selected work, a downloadable résumé, a full-color H-60 wake hero animation, public rotorcraft CFD visualizations, light and dark themes, and a sharing QR code. It uses plain HTML, CSS, and JavaScript with no build step or external runtime dependencies.
+The site includes selected work, a prominent performance-results band, a downloadable résumé, a full-color H-60 wake hero animation, public rotorcraft CFD visualizations, light and dark themes, and a sharing QR code. It uses plain HTML, CSS, and JavaScript with no build step or external runtime dependencies.
 
 ## Repository structure
 
@@ -23,7 +23,9 @@ The site includes selected work, a downloadable résumé, a full-color H-60 wake
 2. Profiling & optimization
 3. Numerical libraries
 
-The November 15, 2026 update preserves the approved wording while reordering the complete entries and their row numbers. It also carries over the latest enlarged desktop hero and responsive presentation.
+The November 15, 2026 update retains this order while restoring major results from the approved public résumé: 50–350× stencil-weight calculation on NVIDIA A100 versus AMD EPYC 7413, a separate >200× stencil-application result, a collaborative 20% code-wide speedup, and 80 ms → 5 ms calculation time for the NETL HyPer fuel-cell/reformer simulation. The detailed work entries also include the separate 1.98× routine speedup and 10% OpenMP submodule improvement with bitwise numerical agreement.
+
+On large desktop screens, the enlarged helicopter overlaps the header and its wake fades behind the copy. The desktop hero uses the existing 720px video; smaller screens keep the lighter 480px derivative. Mobile layouts stack the hero and show the results in two columns.
 
 ## Deployment
 
@@ -36,7 +38,7 @@ No package installation, build command, custom domain, or custom Actions workflo
 ## Maintenance
 
 - Edit `index.html` for copy, `styles.css` for presentation, `app.js` for the theme, view selector, and sharing controls, and `hero.js` for the hero animation. Commit and push to `main` to publish updates.
-- When replacing `styles.css`, update its `?v=` token in `index.html` so returning visitors load the matching stylesheet.
+- When replacing `styles.css` or `hero.js`, update its `?v=` token in `index.html` so returning visitors load the matching presentation and renderer.
 - Replace `Jesus_Arias_Resume.pdf` with an updated PDF under the same filename to preserve its download link.
 - The canonical URL, social metadata, structured-data URL, and both QR files target `https://jarias9.github.io/`. The share dialog reads that canonical URL. If the destination changes, update all of these together before publishing.
 - Keep the media credits in [CREDITS.md](CREDITS.md) and on the page. The hero is a stylized derivative of the GTRI rotor-wake footage; the detailed project videos preserve the original colors, framing, and timing.

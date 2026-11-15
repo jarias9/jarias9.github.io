@@ -8,8 +8,12 @@
   const symbol = button.querySelector('.motion-symbol');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const saveData = Boolean(navigator.connection?.saveData);
-  const width = 480;
-  const height = 212;
+  const desktopArtwork = matchMedia('(min-width: 1180px)').matches && !saveData;
+  const width = desktopArtwork ? 720 : 480;
+  const height = desktopArtwork ? 318 : 212;
+  const sourceUrl = desktopArtwork ? video.dataset.desktopSrc : video.dataset.src;
+  canvas.width = width;
+  canvas.height = height;
   const frameCanvas = document.createElement('canvas');
   frameCanvas.width = width;
   frameCanvas.height = height;
@@ -38,7 +42,7 @@
       frameContext.drawImage(source, 0, 0, width, height);
       const frame = frameContext.getImageData(0, 0, width, height);
       const pixels = frame.data;
-      const limit = width * 208 * 4;
+      const limit = width * (height - (desktopArtwork ? 6 : 4)) * 4;
       for (let i = 0; i < limit; i += 4) {
         const r = pixels[i], g = pixels[i + 1], b = pixels[i + 2];
         const minimum = Math.min(r, g, b);
@@ -54,7 +58,7 @@
           pixels[i + 3] = Math.round(alpha * 255);
         }
       }
-      // The last four rows contain only the resampled source rule/padding.
+      // Clear only the source rule/padding at the selected fixed resolution.
       pixels.fill(0, limit);
       output.putImageData(frame, 0, 0);
       ready = true;
@@ -112,7 +116,7 @@
       return;
     }
     if (!video.paused || pending) return;
-    if (!video.getAttribute('src')) video.src = video.dataset.src;
+    if (!video.getAttribute('src')) video.src = sourceUrl;
     pending = true;
     syncButton();
     video.play().then(() => {

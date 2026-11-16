@@ -34,11 +34,23 @@ Preserve the original scientific content and visible attribution in future edits
 
 ## Stylized helicopter hero
 
-`assets/h60-hero.mp4` is a 480 × 212 H.264 derivative of the rotor-wake video: 311 frames, 10.36 seconds, and 1,292,009 bytes. The source frame order and presentation timing are preserved. Encoding uses Lanczos resizing, libx264 CRF 24, yuv420p, no B-frames, MP4 faststart, and no audio.
+The integrated hero is rebuilt directly from the original 720 × 317 rotor-wake GIF, rather than from a previously compressed MP4. It preserves all 311 original frames, their order, and every 30/40 ms delay, for an exact duration of 10.36 seconds. No flow geometry, vortices, camera motion, or intermediate frames are generated. Upscaling improves sampling and presentation; it does not recover new simulation detail from a higher-resolution original.
 
-`hero.js` uses Canvas 2D to approximate removal of the original white background while retaining the colored foreground. Near-white edge pixels receive transparency and white unmatting. The final six rows of source rule/padding are cleared at 720px, or four rows in the 480px derivative. At desktop widths of at least 1180px, a long CSS opacity fade merges the enlarged wake behind the text; smaller layouts retain a short fade. The desktop stage trims blank vertical margins. This is a stylized presentation of the real footage, not a recovered original alpha channel. The detailed project videos below remain available in their original colors and framing. No flow geometry, vortices, camera motion, or intermediate frames are generated.
+| File | Visible image | Encoded image | Content |
+| --- | --- | --- | --- |
+| `assets/h60-hero-clean-mobile.mp4` | 1080 × 477 | 1080 × 954 | Premultiplied color above grayscale alpha |
+| `assets/h60-hero-clean-desktop.mp4` | 2160 × 954 | 2160 × 1908 | Premultiplied color above grayscale alpha |
+| `assets/h60-hero-clean-poster.png` | 1440 × 636 | RGBA PNG | Transparent still from original frame 155 |
 
-The muted inline hero plays once when visible, then holds, with Pause, Resume, and Replay controls. It pauses offscreen and when the tab is hidden. Reduced-motion and data-saving preferences use a still until deliberate playback; blocked autoplay retains a Play control. The enlarged desktop view uses the existing `h60-wake.mp4` and a 720 × 318 canvas buffer. Smaller viewports and data-saving mode use `h60-hero.mp4` and a 480 × 212 buffer. The source is selected when the page initializes; both buffer sizes remain independent of screen pixel density. The hero visibly credits GTRI and links to the full project context.
+`prepare_hero.py` creates a conservative foreground matte from the lossless GIF frames, estimates uncertain edge coverage from nearby interior colors, bounds pale-pixel opacity to remove white contamination, and removes the original white matte before resizing. It clears the bottom three source rule/padding rows, applies a mild 0.40-pixel antialiasing filter to premultiplied color and alpha, and resizes with Lanczos. This is a stylized approximation of transparency, not a recovered original alpha channel. The detailed project videos remain available with their original colors and framing.
+
+The two hero videos use ordinary H.264 High-profile/yuv420p, CRF 22, no B-frames, MP4 faststart, no audio, and BT.709 color metadata. Desktop uses level 5.0; mobile uses level 4.0. The packed representation stores premultiplied RGB in the top half and grayscale coverage in the bottom half, so browsers do not need a platform-specific alpha-video codec. Normal lossy compression still applies. The processor verifies every encoded packet's timestamp and duration against the GIF, including the final 30 ms frame.
+
+`hero.js` combines the two halves with WebGL and sizes its output to the display's pixel density, capped at 2× and at the available media dimensions. A small alpha-noise floor suppresses compression residue in empty areas. A bounded Canvas 2D fallback uses the same prepared mask when WebGL is unavailable or lost; its maximum buffer widths are 720px on smaller layouts and 960px on desktop. The true-alpha poster remains visible until a video frame has rendered successfully and serves as the failure fallback. Background removal is no longer guessed from compressed video during playback.
+
+At desktop widths of at least 1180px, a long CSS opacity fade merges the enlarged wake behind the text; smaller layouts retain a short fade. The desktop stage trims blank vertical margins. The muted inline hero plays once when visible, then holds, with Pause, Resume, and Replay controls. It pauses offscreen and when the tab is hidden. Reduced-motion and data-saving preferences show the still until deliberate playback; blocked autoplay retains a Play control. The rendition is selected when playback first starts and retained across resizing to avoid restarting or downloading a second video. The hero visibly credits GTRI and links to the full project context.
+
+The older `assets/h60-hero.mp4` derivative remains in the repository for previous versions but is no longer used by the page.
 
 ## Other assets
 

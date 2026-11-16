@@ -12,7 +12,8 @@ The site includes selected work, a browsable band of eight selected results, a d
 - `styles.css` — responsive layout and themes.
 - `results.css` and `results.js` — manual paging of the selected-result cards, with keyboard, touch, reduced-motion, no-JavaScript, and print support.
 - `app.js` — theme preference, simulation view selection, and sharing controls.
-- `hero.js` — background removal and accessible playback for the colored helicopter hero.
+- `hero.js` — GPU compositing of prepared transparency and accessible hero playback.
+- `prepare_hero.py` — reproducible offline preparation of the original H-60 GIF into the clean hero assets.
 - `Jesus_Arias_Resume.pdf` — downloadable résumé.
 - `assets/` — graphics, QR codes, video clips, and video posters.
 - `CREDITS.md` — source attribution and media provenance.
@@ -28,7 +29,17 @@ The November 15, 2026 update publishes the approved prototype while retaining th
 
 The research line identifies tensor-core-accelerated fluid mechanics. Leadership is described as a five-person engineering team, with architecture, sponsor/contractor guidance, and library contributor management in the existing work sections. The detailed entries retain the separate >200× stencil-application result, 10% OpenMP submodule improvement with bitwise numerical agreement, and two internal awards totaling $60K. The up-to-8× microbenchmark result and research-topic wording were confirmed directly by the site owner.
 
-On large desktop screens, the enlarged helicopter overlaps the header and its wake fades behind the copy. The desktop hero uses the existing 720px video; smaller screens keep the lighter 480px derivative. Mobile layouts stack the hero and show four results in a two-by-two grid. Buttons and touch swipes change the selected results manually; there is no automatic rotation.
+On large desktop screens, the enlarged helicopter overlaps the header and its wake fades behind the copy. The hero uses a cleaned, upscaled 2160px-wide desktop rendition and a 1080px-wide mobile rendition, both derived from the original lossless GIF. Prepared transparency and pixel-density-aware canvas rendering replace the old white-background key applied to compressed video. A transparent PNG supplies the initial, reduced-motion, and failure view. Mobile layouts stack the hero and show four results in a two-by-two grid. Buttons and touch swipes change the selected results manually; there is no automatic rotation.
+
+## Rebuilding the hero media
+
+The runtime page has no package dependencies. The optional offline media processor requires Python with Pillow, NumPy, and SciPy, plus `ffmpeg`/`ffprobe` with libx264. Download the original rotor-wake GIF from the source in [CREDITS.md](CREDITS.md), then run:
+
+```sh
+python prepare_hero.py /path/to/original-rotor-wake.gif assets
+```
+
+The script checks the original SHA-256, builds a clean matte before resizing and compression, and produces both packed H.264 renditions plus a transparent poster. It verifies all 311 frames, their timestamps, and the 10.36-second duration. Use `--sample` with a separate output directory for a light/dark matte comparison. Upscaling improves edge sampling without creating new scientific detail. The original project videos below the hero are independent assets.
 
 ## Deployment
 

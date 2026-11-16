@@ -4,12 +4,13 @@ A personal portfolio for Jesus Arias, focused on high-performance computing, num
 
 **Site address:** [jarias9.github.io](https://jarias9.github.io/)
 
-The site includes selected work, a prominent performance-results band, a downloadable résumé, a full-color H-60 wake hero animation, public rotorcraft CFD visualizations, light and dark themes, and a sharing QR code. It uses plain HTML, CSS, and JavaScript with no build step or external runtime dependencies.
+The site includes selected work, a browsable band of eight selected results, a downloadable résumé, a full-color H-60 wake hero animation, public rotorcraft CFD visualizations, light and dark themes, and a sharing QR code. It uses plain HTML, CSS, and JavaScript with no build step or external runtime dependencies.
 
 ## Repository structure
 
 - `index.html` — page content, links, and search/social metadata.
 - `styles.css` — responsive layout and themes.
+- `results.css` and `results.js` — manual paging of the selected-result cards, with keyboard, touch, reduced-motion, no-JavaScript, and print support.
 - `app.js` — theme preference, simulation view selection, and sharing controls.
 - `hero.js` — background removal and accessible playback for the colored helicopter hero.
 - `Jesus_Arias_Resume.pdf` — downloadable résumé.
@@ -23,9 +24,11 @@ The site includes selected work, a prominent performance-results band, a downloa
 2. Profiling & optimization
 3. Numerical libraries
 
-The November 15, 2026 update retains this order while restoring major results from the approved public résumé: 50–350× stencil-weight calculation on NVIDIA A100 versus AMD EPYC 7413, a separate >200× stencil-application result, a collaborative 20% code-wide speedup, and 80 ms → 5 ms calculation time for the NETL HyPer fuel-cell/reformer simulation. The detailed work entries also include the separate 1.98× routine speedup and 10% OpenMP submodule improvement with bitwise numerical agreement.
+The November 15, 2026 update publishes the approved prototype while retaining this order. The opening result cards emphasize the current work: a codebase maintained by 50+ developers, a collaborative 20% code-wide speedup, a 1.98× production-routine speedup with up to 8× in its microbenchmark, and 50–350× stencil-weight calculation on NVIDIA A100 versus AMD EPYC 7413. The second set presents 80 ms → 5 ms real-time simulation calculation, 350M+ simulation cells on 1,000+ cores, the $250K DARPA DeltaVIBE seedling with Co-PI attribution, and more than 10% lower peak lift forces from design changes informed by CFD.
 
-On large desktop screens, the enlarged helicopter overlaps the header and its wake fades behind the copy. The desktop hero uses the existing 720px video; smaller screens keep the lighter 480px derivative. Mobile layouts stack the hero and show the results in two columns.
+The research line identifies tensor-core-accelerated fluid mechanics. Leadership is described as a five-person engineering team, with architecture, sponsor/contractor guidance, and library contributor management in the existing work sections. The detailed entries retain the separate >200× stencil-application result, 10% OpenMP submodule improvement with bitwise numerical agreement, and two internal awards totaling $60K. The up-to-8× microbenchmark result and research-topic wording were confirmed directly by the site owner.
+
+On large desktop screens, the enlarged helicopter overlaps the header and its wake fades behind the copy. The desktop hero uses the existing 720px video; smaller screens keep the lighter 480px derivative. Mobile layouts stack the hero and show four results in a two-by-two grid. Buttons and touch swipes change the selected results manually; there is no automatic rotation.
 
 ## Deployment
 
@@ -38,7 +41,7 @@ No package installation, build command, custom domain, or custom Actions workflo
 ## Maintenance
 
 - Edit `index.html` for copy, `styles.css` for presentation, `app.js` for the theme, view selector, and sharing controls, and `hero.js` for the hero animation. Commit and push to `main` to publish updates.
-- When replacing `styles.css` or `hero.js`, update its `?v=` token in `index.html` so returning visitors load the matching presentation and renderer.
+- When replacing `styles.css`, `results.css`, `results.js`, or `hero.js`, update its `?v=` token in `index.html` so returning visitors load the matching presentation and renderer.
 - Replace `Jesus_Arias_Resume.pdf` with an updated PDF under the same filename to preserve its download link.
 - The canonical URL, social metadata, structured-data URL, and both QR files target `https://jarias9.github.io/`. The share dialog reads that canonical URL. If the destination changes, update all of these together before publishing.
 - Keep the media credits in [CREDITS.md](CREDITS.md) and on the page. The hero is a stylized derivative of the GTRI rotor-wake footage; the detailed project videos preserve the original colors, framing, and timing.

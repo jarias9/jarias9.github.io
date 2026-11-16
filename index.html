@@ -23,7 +23,9 @@
       document.documentElement.dataset.theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     } catch (_) {}
   </script>
-  <link rel="stylesheet" href="/styles.css?v=8153daa89e47">
+  <link rel="stylesheet" href="/styles.css?v=159915c0ac43">
+  <link rel="stylesheet" href="/results.css?v=e867356ecf6e">
+  <script src="/results.js?v=d1d0f09cca14" defer></script>
   <script src="/app.js" defer></script>
   <script src="/hero.js?v=f28201826824" defer></script>
   <script type="application/ld+json">
@@ -46,7 +48,7 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="accent-rule" aria-hidden="true"></span> HPC software engineer &amp; technical lead</p>
         <h1 id="name">Jesus Arias<span class="name-period">.</span></h1>
-        <p class="intro">I build high-performance numerical software and lead CPU/GPU modernization for a scientific codebase maintained by 50+ developers.</p>
+        <p class="intro">I build high-performance numerical software and lead CPU/GPU modernization for production scientific applications.</p>
         <div class="hero-actions">
           <a class="primary-action resume-link" href="/Jesus_Arias_Resume.pdf" download="Jesus_Arias_Resume.pdf" type="application/pdf" data-resume-action><span>Download résumé</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v13m-6-6 6 6 6-6M5 20h14"/></svg></a>
           <div class="download-note"><span>PDF · One page</span><a class="view-pdf" href="/Jesus_Arias_Resume.pdf" target="_blank" rel="noopener noreferrer" type="application/pdf" aria-label="View résumé PDF (opens in a new tab)">View PDF <span aria-hidden="true">↗</span></a></div>
@@ -65,34 +67,72 @@
       </figure>
       <div class="affiliation-line">
         <p><span class="small-label">Current</span>Georgia Tech Research Institute</p>
-        <p><span class="small-label">Research</span><span>Ph.D. candidate · Computational Science &amp; Engineering <span class="secondary-affiliation">· Georgia Tech</span></span></p>
+        <p><span class="small-label">Research</span><span>Ph.D. candidate · Computational Science &amp; Engineering <span class="secondary-affiliation">· Georgia Tech</span><span class="research-focus">Tensor-core-accelerated fluid mechanics</span></span></p>
       </div>
     </section>
 
-    <section class="results-section page-width" aria-labelledby="results-title">
-      <h2 id="results-title" class="eyebrow">Selected performance results</h2>
-      <dl class="results-grid">
-        <div class="result">
-          <dt>Stencil-weight calculation</dt>
-          <dd class="result-value">50–350<span class="result-unit">×</span></dd>
-          <dd class="result-note">Speedup · NVIDIA A100 vs.<br>AMD EPYC 7413</dd>
+    <section class="results-section page-width" data-results aria-labelledby="results-title">
+      <div class="results-heading">
+        <h2 id="results-title" class="eyebrow">Selected results</h2>
+        <div class="results-controls" hidden>
+          <button type="button" data-results-prev aria-controls="results-track" aria-label="Previous results"><span aria-hidden="true">←</span></button>
+          <span data-results-count aria-hidden="true">1 / 2</span>
+          <button type="button" data-results-next aria-controls="results-track" aria-label="Next results"><span aria-hidden="true">→</span></button>
         </div>
-        <div class="result">
-          <dt>Stencil application</dt>
-          <dd class="result-value">&gt;200<span class="result-unit">×</span></dd>
-          <dd class="result-note">Speedup · separate<br>meshfree kernel result</dd>
+      </div>
+      <div class="results-window">
+        <div id="results-track" class="results-track">
+          <div class="results-page" role="group" aria-label="Current work and selected numerical results">
+            <dl class="results-grid">
+              <div class="result">
+                <dt>Developers maintaining the codebase</dt>
+                <dd class="result-value">50<span class="result-unit">+</span></dd>
+                <dd class="result-note">Leading a five-person<br>engineering team</dd>
+              </div>
+              <div class="result">
+                <dt>Code-wide speedup</dt>
+                <dd class="result-value">20<span class="result-unit">%</span></dd>
+                <dd class="result-note">Collaborative numerical<br>vectorization effort</dd>
+              </div>
+              <div class="result">
+                <dt>Production routine speedup</dt>
+                <dd class="result-value">1.98<span class="result-unit">×</span></dd>
+                <dd class="result-note"><strong class="benchmark-result">Up to 8× in microbenchmark</strong>Loop fusion and<br>memory efficiency</dd>
+              </div>
+              <div class="result">
+                <dt>Stencil-weight speedup</dt>
+                <dd class="result-value">50–350<span class="result-unit">×</span></dd>
+                <dd class="result-note">NVIDIA A100 vs.<br>AMD EPYC 7413</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="results-page" role="group" aria-label="Selected simulation and research results">
+            <dl class="results-grid">
+              <div class="result">
+                <dt>Real-time simulation</dt>
+                <dd class="result-value" aria-label="Calculation time reduced from 80 milliseconds to 5 milliseconds">80<span class="result-arrow">→</span>5<span class="result-unit result-ms">ms</span></dd>
+                <dd class="result-note">NETL HyPer fuel-cell/reformer<br>Hardware-in-the-loop testing</dd>
+              </div>
+              <div class="result">
+                <dt>Simulation cells</dt>
+                <dd class="result-value">350M<span class="result-unit">+</span></dd>
+                <dd class="result-note">Coupled H-60 simulations<br>1,000+ CPU cores</dd>
+              </div>
+              <div class="result">
+                <dt>DARPA research seedling</dt>
+                <dd class="result-value">$250<span class="result-unit">K</span></dd>
+                <dd class="result-note">DeltaVIBE Co-PI<br>Led a four-person team</dd>
+              </div>
+              <div class="result">
+                <dt>Lower peak lift forces</dt>
+                <dd class="result-value">&gt;10<span class="result-unit">%</span></dd>
+                <dd class="result-note">Solar-farm design changes<br>informed by hurricane CFD</dd>
+              </div>
+            </dl>
+          </div>
         </div>
-        <div class="result">
-          <dt>Code-wide speedup</dt>
-          <dd class="result-value">20<span class="result-unit">%</span></dd>
-          <dd class="result-note">Collaborative numerical<br>vectorization effort</dd>
-        </div>
-        <div class="result">
-          <dt>Real-time simulation</dt>
-          <dd class="result-value" aria-label="Calculation time reduced from 80 milliseconds to 5 milliseconds">80<span class="result-arrow">→</span>5<span class="result-unit result-ms">ms</span></dd>
-          <dd class="result-note">Fuel-cell/reformer model<br>NETL HyPer testbed</dd>
-        </div>
-      </dl>
+      </div>
+      <p class="results-status" data-results-status aria-live="polite" aria-atomic="true"></p>
     </section>
 
     <section id="work" class="work-section page-width" aria-labelledby="work-title">
@@ -101,17 +141,17 @@
       <article class="work-row" id="leadership">
         <span class="row-number" aria-hidden="true">01</span>
         <div class="work-title"><h3>Architecture &amp; technical leadership</h3></div>
-        <div class="work-detail"><p>I lead HPC modernization for a production codebase maintained by <strong>50+ developers</strong>, directing three engineers and coordinating two collaborators. I designed a CPU/GPU portability API spanning memory management, kernel execution, and math libraries, and guide architecture and infrastructure planning for government sponsors.</p></div>
+        <div class="work-detail"><p>I lead a <strong>five-person engineering team</strong> modernizing a production scientific codebase maintained by <strong>50+ developers</strong>. I designed its CPU/GPU portability API for memory, kernel execution, and math libraries, and guide sponsor and contractor plans for architecture, infrastructure, and incremental Kokkos/Umpire adoption.</p></div>
       </article>
       <article class="work-row" id="performance">
         <span class="row-number" aria-hidden="true">02</span>
         <div class="work-title"><h3>Profiling &amp; optimization</h3></div>
-        <div class="work-detail"><p>My optimizations include a <strong>1.98× routine speedup</strong> through loop fusion and improved memory efficiency, and a <strong>10% faster OpenMP submodule with bitwise numerical agreement</strong>. I also contributed numerical vectorization to a team effort that delivered a <strong>20% code-wide speedup</strong>.</p><p>I built a Caliper/Adiak/PAPI profiling library for MPI+GPU and multi-phase MPMD applications. My roofline analyses, hardware-counter measurements, and memory studies informed performance requirements and acceptance criteria.</p><p class="tool-line">Instrumentation across CUDA · oneAPI · GCC</p></div>
+        <div class="work-detail"><p>Loop fusion and improved memory efficiency delivered a <strong>1.98× speedup for a routine in production code</strong>, with <strong>up to 8× speedup in its microbenchmark</strong>. My optimizations also include a <strong>10% faster OpenMP submodule with bitwise numerical agreement</strong>. I contributed numerical vectorization to a team effort that delivered a <strong>20% code-wide speedup</strong>.</p><p>I built a Caliper/Adiak/PAPI profiling library for MPI+GPU and multi-phase MPMD applications. My roofline analyses and memory studies informed performance requirements and acceptance criteria. I also resolved thread races and MPI/pthread shutdown deadlocks.</p><p class="tool-line">Instrumentation across CUDA · oneAPI · GCC</p></div>
       </article>
       <article class="work-row" id="numerical">
         <span class="row-number" aria-hidden="true">03</span>
         <div class="work-title"><h3>Numerical libraries</h3></div>
-        <div class="work-detail"><p>I proposed, secured funding for, and led an MPI meshfree PDE platform using radial basis functions. Its stencil-weight calculation achieved <strong>50–350× speedup on NVIDIA A100 versus AMD EPYC 7413</strong>. A separate stencil-application kernel achieved <strong>&gt;200× speedup</strong>.</p><p>I implement selected BLAS/LAPACK routines for Kokkos Kernels Extension and build Serial/OpenMP test infrastructure on Intel and Arm, including a Grace Hopper CI runner. For LLNL’s BOBA tensor-train library, I implemented batched-SVD execution paths across CPUs, GPUs, and MPI-distributed systems.</p><p class="tool-line">Eigen/OpenMP · CUDA/cuSOLVER · MPI<br>RAJA · Umpire · Slurm CI</p></div>
+        <div class="work-detail"><p>I proposed and led an MPI meshfree PDE platform using radial basis functions, securing <strong>two internal awards totaling $60K</strong>. Its stencil-weight calculation achieved <strong>50–350× speedup on NVIDIA A100 versus AMD EPYC 7413</strong>. A separate stencil-application kernel achieved <strong>&gt;200× speedup</strong>.</p><p>I implement selected BLAS/LAPACK routines for Kokkos Kernels Extension and manage contributors, scope, and integration, with automated Serial/OpenMP tests on Intel and Arm and a Grace Hopper CI runner. For LLNL’s BOBA tensor-train library, I implemented batched-SVD paths across CPUs, GPUs, and MPI, with distributed tests in multi-machine Slurm CI.</p><p class="tool-line">Eigen/OpenMP · CUDA/cuSOLVER · MPI<br>RAJA · Umpire · Slurm CI</p></div>
       </article>
       </div>
     </section>

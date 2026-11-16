@@ -270,3 +270,8 @@ dialog h2{font-size:35px;letter-spacing:-1px;margin-top:16px}
  .contact-section h2{font-size:35px}
  .contact-section .eyebrow,.contact-intro,.contact-links .small-label,.footer-line,.contact-section h2 em{color:#333}
 }
+
+/* Research topic and measured microbenchmark highlight. */
+.research-focus{display:block;margin-top:5px;color:var(--ink)}
+.benchmark-result{display:block;margin-bottom:3px;color:var(--accent);font-weight:600}
+@media(max-width:760px){.research-focus{margin-top:4px}}

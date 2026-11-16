@@ -87,7 +87,6 @@ h2{font:normal 46px/1.1 var(--serif);letter-spacing:-1.5px;margin:0}
 .simulation-heading h2{font-size:39px}
 .simulation-figure{margin:0;min-width:0}
 .simulation-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px;border-top:1px solid var(--line)}
-.simulation-topline>.small-label{font-size:10px;letter-spacing:.5px}
 .simulation-switcher{display:flex;gap:18px}
 .simulation-switcher[hidden]{display:none}
 .simulation-switcher button{border:0;border-bottom:2px solid transparent;background:transparent;font:12px var(--sans);min-height:44px;padding:0 1px;color:var(--muted)}
@@ -187,7 +186,6 @@ dialog h2{font-size:35px;letter-spacing:-1px;margin-top:16px}
  .simulation-heading h2{font-size:34px}
  .simulation-figure{width:100%}
  .simulation-topline{gap:10px}
- .simulation-topline>.small-label{font-size:9px;letter-spacing:.3px}
  .simulation-switcher{gap:15px}
  .simulation-switcher button{font-size:12px}
  .simulation-figure figcaption{font-size:10px}
@@ -247,7 +245,7 @@ dialog h2{font-size:35px;letter-spacing:-1px;margin-top:16px}
 @media(max-width:360px){.result-value{font-size:36px}.result{padding-left:12px}.result dt{font-size:11px}.result-note{font-size:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 @media print{
- .masthead nav,.hero-actions,.hero-visual,.share-toggle,dialog,.simulation-switcher,.simulation-links{display:none!important}
+ .masthead nav,.hero-actions,.hero-visual,.share-toggle,dialog,.simulation-topline,.simulation-switcher,.simulation-links{display:none!important}
  body{background:#fff;color:#000}
  .page-width{width:100%;max-width:none}
  .hero{display:block;padding-top:20px}
@@ -270,7 +268,7 @@ dialog h2{font-size:35px;letter-spacing:-1px;margin-top:16px}
  .contact-section .eyebrow,.contact-intro,.contact-links .small-label,.footer-line,.contact-section h2 em{color:#333}
 }
 
-/* Research topic and measured microbenchmark highlight. */
-.research-focus{display:block;margin-top:5px;color:var(--ink)}
+/* Affiliation details, research topic, and measured microbenchmark highlight. */
+.affiliation-detail,.research-focus{display:block;margin-top:5px;color:var(--ink)}
 .benchmark-result{display:block;margin-bottom:3px;color:var(--accent);font-weight:600}
-@media(max-width:760px){.research-focus{margin-top:4px}}
+@media(max-width:760px){.affiliation-detail,.research-focus{margin-top:4px}}

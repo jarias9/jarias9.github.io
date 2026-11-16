@@ -36,7 +36,7 @@
 
       if (announce && status) {
         const label = pages[current].getAttribute('aria-label');
-        status.textContent = `Results ${current + 1} of ${pages.length}${label ? `: ${label}` : ''}.`;
+        status.textContent = `Highlights ${current + 1} of ${pages.length}${label ? `: ${label}` : ''}.`;
       }
     }
 
@@ -55,8 +55,8 @@
 
     previous.type = 'button';
     next.type = 'button';
-    if (!previous.hasAttribute('aria-label')) previous.setAttribute('aria-label', 'Previous results');
-    if (!next.hasAttribute('aria-label')) next.setAttribute('aria-label', 'Next results');
+    if (!previous.hasAttribute('aria-label')) previous.setAttribute('aria-label', 'Previous highlights');
+    if (!next.hasAttribute('aria-label')) next.setAttribute('aria-label', 'Next highlights');
     if (status) status.setAttribute('aria-atomic', 'true');
 
     previous.addEventListener('click', () => goTo(current - 1));

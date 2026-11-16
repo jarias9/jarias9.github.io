@@ -45,7 +45,7 @@
   copyButton.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(canonical);
-      status.textContent = 'Link copied. Ready to share.';
+      status.textContent = 'Link copied.';
     } catch (_) {
       status.textContent = canonical;
     }

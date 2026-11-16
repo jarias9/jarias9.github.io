@@ -119,7 +119,7 @@
               <div class="result">
                 <dt>CPU/GPU linear algebra</dt>
                 <dd class="result-value result-value--text">Batched SVD</dd>
-                <dd class="result-note">I implemented CPU and GPU execution paths for LLNL’s BOBA tensor-train library, with MPI for distributed computation.</dd>
+                <dd class="result-note">I implemented CPU and GPU execution paths for LLNL’s BOBA tensor-train library.</dd>
               </div>
               <div class="result">
                 <dt>Performance profiling</dt>
@@ -184,9 +184,9 @@
         <div class="work-title"><h3>Numerical libraries</h3></div>
         <div class="work-detail">
           <p>I implement selected BLAS/LAPACK routines for GTRI’s Kokkos Kernels Extension library, define its scope, set priorities for contributors, and oversee integration. I built automated Serial/OpenMP tests on Intel and Arm and a Grace Hopper CI runner.</p>
-          <p>For LLNL’s BOBA tensor-train library, I implemented batched SVD on CPUs and GPUs, with MPI for distributed computation. I integrated CPU, GPU, and distributed tests into multi-machine Slurm CI.</p>
+          <p>For LLNL’s BOBA tensor-train library, I implemented batched SVD on CPUs and GPUs. I integrated CPU, GPU, and distributed tests into multi-machine Slurm CI.</p>
           <p>I proposed and led development of a meshfree PDE platform using MPI and radial basis functions, securing <strong>$60K in research funding through two internal awards</strong>. Stencil-weight calculations ran <strong>50–350× faster on NVIDIA A100 than on AMD EPYC 7413</strong>. A separate stencil-application kernel achieved a <strong>&gt;200× speedup</strong>.</p>
-          <p class="tool-line">BOBA: Eigen/OpenMP · CUDA/cuSOLVER · MPI<br>RAJA · Umpire</p>
+          <p class="tool-line">BOBA: Eigen/OpenMP · CUDA/cuSOLVER<br>RAJA · Umpire</p>
         </div>
       </article>
       </div>

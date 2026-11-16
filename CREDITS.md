@@ -74,4 +74,6 @@ The earlier `assets/h60-hero-clean-mobile.mp4`, `assets/h60-hero-clean-desktop.m
 
 ## Other assets
 
-The retained computational mesh illustration and social preview were created for this personal site. The mesh is decorative linework, not a simulation result, and is no longer used by the current hero. QR codes encode the intended public website address.
+`assets/social-preview-helicopter.png` is the current social-sharing preview: a 1732 × 908 PNG created with OpenAI image generation, using the H-60 hero artwork and the current portfolio layout as visual references. It combines the name and role with stylized helicopter-wake artwork on the site's cream background. This is a promotional graphic, not a new scientific visualization or simulation result. The original GTRI visualization attribution is recorded above.
+
+The retained `assets/compute-surface.svg` illustration and `assets/social-preview.png` card contain the earlier decorative mesh design. The mesh is decorative linework, not a simulation result, and is no longer used by the current hero or advertised sharing preview. QR codes encode the intended public website address.

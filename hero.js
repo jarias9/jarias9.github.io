@@ -246,10 +246,9 @@
       draw() {
         const width = target.width;
         const height = target.height;
-        const sourceHeight = video.videoHeight / 2;
-        // Draw each half separately to keep the packing seam out of the filter.
-        context.drawImage(video, 0, 0, video.videoWidth, sourceHeight, 0, 0, width, height);
-        context.drawImage(video, 0, sourceHeight, video.videoWidth, sourceHeight, 0, height, width, height);
+        // Capture color and alpha in one video read so both use the same frame.
+        // The prepared black margins around the packing seam prevent filter bleed.
+        context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, width, height * 2);
         const packed = context.getImageData(0, 0, width, height * 2).data;
         const pixels = result.data;
         const offset = width * height * 4;

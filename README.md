@@ -4,7 +4,7 @@ A personal portfolio for Jesus Arias, focused on high-performance computing, num
 
 **Site address:** [jarias9.github.io](https://jarias9.github.io/)
 
-The site includes selected work, a browsable band of eight selected results, a downloadable résumé, a full-color H-60 wake hero animation, public rotorcraft CFD visualizations, light and dark themes, and a sharing QR code. It uses plain HTML, CSS, and JavaScript with no build step or external runtime dependencies.
+The site includes selected work, a browsable band of eight selected results, a downloadable résumé, a full-color AI-upscaled H-60 wake hero animation, public rotorcraft CFD visualizations, light and dark themes, and a sharing QR code. It uses plain HTML, CSS, and JavaScript with no build step or external runtime dependencies.
 
 ## Repository structure
 
@@ -13,7 +13,9 @@ The site includes selected work, a browsable band of eight selected results, a d
 - `results.css` and `results.js` — manual paging of the selected-result cards, with keyboard, touch, reduced-motion, no-JavaScript, and print support.
 - `app.js` — theme preference, simulation view selection, and sharing controls.
 - `hero.js` — GPU compositing of prepared transparency and accessible hero playback.
-- `prepare_hero.py` — reproducible offline preparation of the original H-60 GIF into the clean hero assets.
+- `upscale_hero_ai.py` — offline neural super-resolution of the original H-60 GIF, with verified model files and a frame/hash manifest.
+- `prepare_hero_ai.py` — offline matting, transparency packing, poster creation, and H.264 encoding of the verified AI frames.
+- `prepare_hero.py` — retained preparation script for the earlier, conventionally resized clean hero assets.
 - `Jesus_Arias_Resume.pdf` — downloadable résumé.
 - `assets/` — graphics, QR codes, video clips, and video posters.
 - `CREDITS.md` — source attribution and media provenance.
@@ -29,17 +31,31 @@ The November 15, 2026 update publishes the approved prototype while retaining th
 
 The research line identifies tensor-core-accelerated fluid mechanics. Leadership is described as a five-person engineering team, with architecture, sponsor/contractor guidance, and library contributor management in the existing work sections. The detailed entries retain the separate >200× stencil-application result, 10% OpenMP submodule improvement with bitwise numerical agreement, and two internal awards totaling $60K. The up-to-8× microbenchmark result and research-topic wording were confirmed directly by the site owner.
 
-On large desktop screens, the enlarged helicopter overlaps the header and its wake fades behind the copy. The hero uses a cleaned, upscaled 2160px-wide desktop rendition and a 1080px-wide mobile rendition, both derived from the original lossless GIF. Prepared transparency and pixel-density-aware canvas rendering replace the old white-background key applied to compressed video. A transparent PNG supplies the initial, reduced-motion, and failure view. Mobile layouts stack the hero and show four results in a two-by-two grid. Buttons and touch swipes change the selected results manually; there is no automatic rotation.
+On large desktop screens, the enlarged helicopter overlaps the header and its wake fades behind the copy. The hero uses a 2160px-wide AI-upscaled desktop rendition and a 1080px-wide mobile rendition, derived from the original GIF with the official Real-ESRGAN animevideov3 ×3 model. Prepared transparency and pixel-density-aware canvas rendering handle the enlarged animation. A transparent PNG supplies the initial, reduced-motion, and failure view. Mobile layouts stack the hero and show four results in a two-by-two grid. Buttons and touch swipes change the selected results manually; there is no automatic rotation.
 
 ## Rebuilding the hero media
 
-The runtime page has no package dependencies. The optional offline media processor requires Python with Pillow, NumPy, and SciPy, plus `ffmpeg`/`ffprobe` with libx264. Download the original rotor-wake GIF from the source in [CREDITS.md](CREDITS.md), then run:
+The runtime page has no package dependencies. The optional offline rebuild has two stages:
+
+1. Neural super-resolution with Python, `ncnn==1.0.20261020`, Pillow, and NumPy. The recorded build uses CPU inference; no NVIDIA GPU is required.
+2. Matting and encoding with Python, Pillow, NumPy, and SciPy, plus `ffmpeg`/`ffprobe` with libx264.
+
+Download the original rotor-wake GIF from the source in [CREDITS.md](CREDITS.md). Download the [official Real-ESRGAN model bundle](https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-ubuntu.zip) and extract `models/realesr-animevideov3-x3.param` and `models/realesr-animevideov3-x3.bin` into the same model directory. The model graph supplies the ×3 result through a learned ×4 network followed by its included 0.75 resize. Model and source checksums are recorded in [CREDITS.md](CREDITS.md).
+
+From the repository root, run:
 
 ```sh
-python prepare_hero.py /path/to/original-rotor-wake.gif assets
+python upscale_hero_ai.py /path/to/original-rotor-wake.gif \
+  --model-dir /path/to/models --output-dir work/ai-frames --threads 8
+python prepare_hero_ai.py /path/to/original-rotor-wake.gif work/ai-frames assets \
+  --work-dir work/packed
 ```
 
-The script checks the original SHA-256, builds a clean matte before resizing and compression, and produces both packed H.264 renditions plus a transparent poster. It verifies all 311 frames, their timestamps, and the 10.36-second duration. Use `--sample` with a separate output directory for a light/dark matte comparison. Upscaling improves edge sampling without creating new scientific detail. The original project videos below the hero are independent assets.
+The first stage writes AI-upscaled PNG frames and a manifest containing provenance, frame hashes, and the original delays. Use `--resume` with the same script, model, dependency versions, and thread count to continue an interrupted upscale; `--start` and `--end` select a bounded frame range, with the end index exclusive. The second stage checks the source and frame hashes, builds a matte at the neural output resolution, and produces `assets/h60-hero-ai-desktop.mp4`, `assets/h60-hero-ai-mobile.mp4`, and `assets/h60-hero-ai-poster.png`. It verifies every encoded frame's timestamp and duration against the original GIF: 311 frames and exactly 10,360 ms. Do not commit the model weights or working directories to the published repository.
+
+The desktop visible image is 2160 × 954; the mobile image is 1080 × 477. Each H.264 file packs premultiplied color above grayscale alpha, doubling its encoded height. The transparent poster is 1440 × 636 and comes from frame 155. The browser retains the packed WebGL player and its Canvas 2D and poster fallbacks.
+
+AI super-resolution estimates and smooths fine appearance; it does not establish new physical or simulation detail. All original frames, their order, and their delays are retained, with no frame interpolation or newly generated motion. The original project clips below the hero remain independent of the AI treatment. The previous clean hero assets and `prepare_hero.py` are retained for historical rebuilds.
 
 ## Deployment
 

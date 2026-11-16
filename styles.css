@@ -29,13 +29,14 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-off
 .hero h1{font:normal clamp(78px,9.2vw,122px)/.96 var(--serif);letter-spacing:-5.5px;white-space:nowrap;margin:22px 0 24px}
 .name-period{color:var(--accent)}
 .intro{font-size:20px;line-height:1.5;max-width:590px;margin:0}
-.hero-actions{display:flex;gap:24px;align-items:center;margin:26px 0 0}
+.hero-actions{display:flex;flex-wrap:nowrap;gap:12px;align-items:center;margin:26px 0 0}
 .primary-action{display:inline-flex;align-items:center;justify-content:space-between;gap:32px;background:var(--button);color:var(--on-button);padding:17px 23px;min-height:58px;border:1px solid var(--button);border-radius:0;text-decoration:none;font-size:15px;font-weight:600;transition:background .15s,color .15s}
 .primary-action:hover{background:var(--accent);color:var(--paper);border-color:var(--accent)}
 .primary-action svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.5}
-.download-note{display:flex;flex-direction:column;align-items:flex-start;flex-shrink:0;color:var(--muted);font:11px/1.6 var(--mono)}
-.view-pdf{display:inline-flex;align-items:center;gap:7px;min-height:44px;font:12px var(--sans);color:var(--ink);text-underline-offset:4px}
-.view-pdf:hover{color:var(--accent)}
+.linkedin-action{display:inline-flex;flex-shrink:0;align-items:center;justify-content:space-between;gap:24px;min-height:58px;padding:17px 21px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font-size:15px;font-weight:600;text-decoration:none;transition:color .15s,border-color .15s}
+.linkedin-action:hover{color:var(--accent);border-color:var(--accent)}
+.linkedin-arrow{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.5}
+.linkedin-mark{display:none}
 .hero-visual{width:100%;min-width:0;margin:42px 0 0;align-self:center}
 .hero-stage{width:100%;aspect-ratio:720/318;position:relative;isolation:isolate;overflow:hidden;background:var(--paper);-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%);mask-image:linear-gradient(90deg,transparent,#000 14%)}
 .hero-stage img,.hero-stage video,.hero-stage canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
@@ -134,8 +135,8 @@ dialog h2{font-size:35px;letter-spacing:-1px;margin-top:16px}
  .hero h1{font-size:clamp(72px,9.1vw,100px);letter-spacing:-4.5px}
  .hero-copy>.eyebrow{font-size:10px;letter-spacing:.8px}
  .intro{font-size:18px}
- .hero-actions{gap:18px}
  .primary-action{padding:16px 20px;gap:23px;font-size:14px}
+ .linkedin-action{padding:16px 20px;font-size:14px}
  .affiliation-line{grid-template-columns:1.15fr 1fr;gap:32px}
  .hero-caption{font-size:9px}
  .work-row{grid-template-columns:26px minmax(0,.8fr) minmax(0,1.4fr);column-gap:24px}
@@ -143,6 +144,12 @@ dialog h2{font-size:35px;letter-spacing:-1px;margin-top:16px}
  .simulation-feature{gap:38px}
  .contact-grid{gap:42px}
  .contact-links>a{grid-template-columns:60px 1fr 15px;gap:10px;font-size:12px}
+}
+@media(max-width:900px){
+ .linkedin-action{width:56px;padding:0;justify-content:center}
+ .linkedin-label,.linkedin-arrow{display:none}
+ .linkedin-mark{display:inline-flex;align-items:center;justify-content:center;width:27px;height:27px;border-radius:2px;background:var(--ink);color:var(--paper);font:700 23px/1 Arial,sans-serif;letter-spacing:-1px;padding-right:1px;padding-bottom:1px}
+ .linkedin-action:hover .linkedin-mark{background:var(--accent)}
 }
 @media(max-width:760px){
  .page-width{width:calc(100% - 40px)}
@@ -159,9 +166,10 @@ dialog h2{font-size:35px;letter-spacing:-1px;margin-top:16px}
  .accent-rule{width:17px;margin-right:7px}
  .hero h1{font-size:clamp(56px,15.6vw,90px);letter-spacing:-2.6px;margin:16px 0 16px}
  .intro{font-size:17px;line-height:1.48;max-width:590px}
- .hero-actions{margin-top:22px;gap:20px}
+ .hero-actions{margin-top:22px;max-width:390px}
  .primary-action{min-height:56px;min-width:195px;padding:16px 18px;font-size:14px}
- .download-note{font-size:10px}
+ .hero-actions .resume-link{flex:1 1 auto;min-width:0;gap:10px;padding:15px 14px;white-space:nowrap}
+ .linkedin-action{min-height:56px}
  .hero-visual{width:min(335px,100%);margin:20px auto 12px}
  .hero-stage{aspect-ratio:auto;height:120px}
  .hero-stage img,.hero-stage video,.hero-stage canvas{height:auto;top:-14px;bottom:auto}
@@ -206,9 +214,7 @@ dialog h2{font-size:35px;letter-spacing:-1px;margin-top:16px}
  .masthead-label{display:none}
  .hero-copy>.eyebrow{font-size:8px}
  .hero h1{font-size:53px}
- .hero-actions{gap:12px}
  .primary-action{min-width:182px}
- .download-note{font-size:9px}
  .contact-links>a{grid-template-columns:55px 1fr 12px;font-size:12px}
  .work-title h3{font-size:25px}
 }
